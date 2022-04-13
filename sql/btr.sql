@@ -3,9 +3,9 @@ create table batch1btr_user (
     username varchar(255)unique not null,
     userpassword varchar(255) not null,
     uname varchar(255) not null,
-    date_of_joining date,
+    date_of_joining varchar(255),
     nationality varchar(255),
-    date_of_birth date,
+    date_of_birth varchar(255),
     passport_number varchar(255),
     user_role varchar(255)
 );
@@ -23,11 +23,13 @@ create table BATCH1BTR_TRIPDETAILS(
     to_country varchar(255),
     accomodation varchar(255),
     reason varchar(255),
-    date_of_journey date,
+    date_of_journey varchar(255),
     amount number(5),
     currency varchar(255),
     status varchar(255)
 );
+
+
 
 create table batch1btr_locations (
     city_id number(3) GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) primary key,

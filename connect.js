@@ -8,7 +8,9 @@ async function connect(query) {
       password      : "root",
       connectString : "localhost:1521/xe"
     });
-   return connection.execute(query)
+   let sol = connection.execute(query)
+   connection.commit()
+   return sol
      }
      catch(e){
          console.log(e)
