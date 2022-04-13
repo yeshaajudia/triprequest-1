@@ -1,0 +1,65 @@
+create table batch1btr_user (
+    user_id number(3) GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) primary key,
+    username varchar(255)unique not null,
+    userpassword varchar(255) not null,
+    uname varchar(255) not null,
+    date_of_joining date,
+    nationality varchar(255),
+    date_of_birth date,
+    passport_number varchar(255),
+    user_role varchar(255)
+);
+insert into batch1btr_user (username, userpassword,uname, user_role) values ('supervisor@mastek.com', 'root','supervisor','L1');
+insert into batch1btr_user (username, userpassword,uname, user_role) values ('depthead@mastek.com', 'root','depthead','L2');
+insert into batch1btr_user (username, userpassword,uname, user_role) values ('prochead@mastek.com', 'root','prochead','L3');
+
+
+create table BATCH1BTR_TRIPDETAILS(
+    trip_id number(3) GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) primary key,
+    user_id number(3) references batch1btr_user(user_id),
+    from_city varchar(255),
+    from_country varchar(255),
+    to_city varchar(255),
+    to_country varchar(255),
+    accomodation varchar(255),
+    reason varchar(255),
+    date_of_journey date,
+    amount number(5),
+    currency varchar(255),
+    status varchar(255)
+);
+
+create table batch1btr_locations (
+    city_id number(3) GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) primary key,
+    city varchar(255),
+    country varchar(255)
+);
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('DELHI', 'INDIA');
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('AHMEDABAD', 'INDIA');
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('PUNE', 'INDIA');
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('DUBAI', 'UAE');
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('BERLIN', 'GERMANY');
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('LONDON', 'ENGLAND');
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('JAMSHEDPUR', 'INDIA');
+
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('ABU DHABI', 'UAE');
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('KUWAIT', 'UAE');
+insert into batch1btr_locations (CITY,COUNTRY) values ('SHARJAH', 'UAE');
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('MANCHESTER', 'ENGLAND');
+insert into batch1btr_locations (CITY,COUNTRY) values ('LIVERPOOL', 'ENGLAND');
+insert into batch1btr_locations (CITY,COUNTRY) values ('BIRMINGHAM', 'ENGLAND');
+
+insert into batch1btr_locations (CITY,COUNTRY) values ('HAMBURG', 'GERMANY');
+
+
+commit;
