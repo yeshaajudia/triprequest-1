@@ -34,7 +34,7 @@ router.get("/create", async (req, res) => {
     const query = `select * from batch1btr_user where username = '${req.session.userid}'`
     const result = await connect(query)
     const user =  result.rows
-    console.log(user)
+    // console.log(user)
     res.render("create.ejs", { user });
   }
   else{
@@ -44,6 +44,8 @@ router.get("/create", async (req, res) => {
 ;
 
 router.post("/create", async (req, res) => {
+  if(!req.session.userid) res.redirect("/account/login")
+  else{
   const from_city = req.body.from_city;
   const to_city = req.body.to_city;
   const from_country = req.body.from_country;
@@ -59,10 +61,12 @@ router.post("/create", async (req, res) => {
   let insert_query = `INSERT INTO BATCH1BTR_TRIPDETAILS (user_id, from_city, to_city, from_country, to_country, date_of_journey, accomodation, reason, amount,currency, status) VALUES('${user_id}','${from_city}', '${to_city}', '${from_country}', '${to_country}', to_char(to_date('${date_of_journey}','yyyy-mm-dd'),'yyyy-mm-dd'), '${accomodation}', '${reason}', '${amount}', '${currency}', 'In Process') `;
   const solution = await connect(insert_query);
   res.redirect("/");
-});
+}});
 
 
 router.get("/approve/:trip_id/:status", async (req, res) => {
+  if(!req.session.userid) res.redirect("/account/login")
+  else{
   let query = `Select user_role from batch1btr_user where username ='${session.userid}'`;
   const sol = await connect(query);
   const user_role = sol["rows"][0][0];
@@ -85,9 +89,11 @@ router.get("/approve/:trip_id/:status", async (req, res) => {
   } else {
     res.send("You're not allowed to do this action")
   }
-})
+}})
 
 router.get("/decline/:trip_id", async (req, res) => {
+  if(!req.session.userid) res.redirect("/account/login")
+  else{
   let query = `Select user_role from batch1btr_user where username ='${session.userid}'`;
   const sol = await connect(query);
   // console.log(sol["rows"])
@@ -105,7 +111,7 @@ router.get("/decline/:trip_id", async (req, res) => {
     res.send("You're not allowed to do this action")
   }
 
-})
+}})
 
 
 
