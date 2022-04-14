@@ -29,9 +29,19 @@ router.get("/", async (req, res) => {
   } else res.redirect("/account/login");
 });
 
-router.get("/create", (req, res) => {
-  res.render("create.ejs");
-});
+router.get("/create", async (req, res) => {
+  if(req.session.userid){
+    const query = `select * from batch1btr_user where username = '${req.session.userid}'`
+    const result = await connect(query)
+    const user =  result.rows
+    console.log(user)
+    res.render("create.ejs", { user });
+  }
+  else{
+    res.redirect('/account/login')
+  }
+ } )
+;
 
 router.post("/create", async (req, res) => {
   const from_city = req.body.from_city;
