@@ -10,94 +10,98 @@
 
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
 </head>
 
 <body>
 
     <!-- //city from/to , country from/to, DOJ, accomodation,reason,advance -> amount, currency, submit -->
+    <div>   
 
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="well well-sm">
-                    <form class="form-horizontal" action="/create" method="post">
-                        <fieldset>
-                            <legend class="text-center">Create new request</legend>
-
-                            <!-- Name input-->
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="from_city">From City</label>
-                                <div class="col-md-9">
-                                    <input id="from_city" name="from_city" type="text" placeholder="from_city"
-                                        class="form-control" />
-                                </div>
-
-                                <label class="col-md-3 control-label" for="to_city">TO City</label>
-                                <div class="col-md-9">
-                                    <input id="to_city" name="to_city" type="text" placeholder="to_city"
-                                        class="form-control" />
-                                </div>
-                                
-                                <label class="col-md-3 control-label" for="from_country">From Country</label>
-                                <div class="col-md-9">
-                                    <input id="from_country" name="from_country" type="text" placeholder="from_country"
-                                        class="form-control" />
-                                </div>
-                                
-                                <label class="col-md-3 control-label" for="to_country">To Country</label>
-                                <div class="col-md-9">
-                                    <input id="to_country" name="to_country" type="text" placeholder="to_country"
-                                        class="form-control" />
-                                </div>
-
-                                <label class="col-md-3 control-label" for="date_of_journey">Date of journey</label>
-                                <div class="col-md-9">
-                                    <input id="date_of_journey" name="date_of_journey" type="date" placeholder="date_of_journey"
-                                        class="form-control" />
-                                </div>
-
-                                <label class="col-md-3 control-label" for="accomodation">Accomodation</label>
-                                <div class="col-md-9">
-                                    <input id="accomodation" name="accomodation" type="text" placeholder="accomodation"
-                                        class="form-control" />
-                                </div> 
-
-                                <label class="col-md-3 control-label" for="reason">Reason</label>
-                                <div class="col-md-9">
-                                    <input id="reason" name="reason" type="text" placeholder="reason"
-                                        class="form-control" />
-                                </div>
-
-                                <label class="col-md-3 control-label" for="amount">Amount</label>
-                                <div class="col-md-9">
-                                    <input id="amount" name="amount" type="text" placeholder="amount"
-                                        class="form-control" />
-                                </div>
-
-                                <label class="col-md-3 control-label" for="currency">Currency</label>
-                                <div class="col-md-9">
-                                    <input id="currency" name="currency" type="text" placeholder="currency"
-                                        class="form-control" />
-                                </div>
-
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg">
-                                        Submit
-                                    </button>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
+        <form class="form-horizontal" action="/create" method="post" >
+            <fieldset>
+                <legend class="text-center">Create new request</legend>
+            <div>
+                    <label for="">Name: </label>
+                    <p> <%=user[0][3]%></p>
+                    <label for="">Date of joining: </label>
+                    <p><%=user[0][4]%></p>
+                    <label for="">Nationality: </label>
+                    <p><%=user[0][5]%></p>
+                    <br>
+                    <label for="">Date of Birth: </label>
+                    <p><%=user[0][6]%></p>
+                    <label for="">Passport number: </label>
+                    <p><%=user[0][7]%></p>
                 </div>
-            </div>
-        </div>
+                <hr>
+                <div class="form-group" style="width: 60%;">
+                    <label class="col-md-3 control-label" for="from_city">From City</label>
+                    <div class="col-md-9">
+                        <input id="from_city" name="from_city" type="text" placeholder="from_city"
+                            class="form-control" />
+                        </div>
+
+                        <label class="col-md-3 control-label" for="to_city">TO City</label>
+                    <div class="col-md-9">
+                        <input id="to_city" name="to_city" type="text" placeholder="to_city"
+                            class="form-control" />
+                    </div>
+                    
+                    <label class="col-md-3 control-label" for="from_country">From Country</label>
+                    <div class="col-md-9">
+                        <input id="from_country" name="from_country" type="text" placeholder="from_country"
+                            class="form-control" />
+                    </div>
+                    
+                    <label class="col-md-3 control-label" for="to_country">To Country</label>
+                    <div class="col-md-9">
+                        <input id="to_country" name="to_country" type="text" placeholder="to_country"
+                            class="form-control" />
+                    </div>
+
+                    <label class="col-md-3 control-label" for="date_of_journey">Date of journey</label>
+                    <div class="col-md-9">
+                        <input id="date_of_journey" name="date_of_journey" type="date" placeholder="date_of_journey"
+                        class="form-control" />
+                    </div>
+
+                    <label class="col-md-3 control-label" for="accomodation">Accomodation</label>
+                    <div class="col-md-9">
+                        <input id="accomodation" name="accomodation" type="text" placeholder="accomodation"
+                            class="form-control" />
+                    </div> 
+
+                    <label class="col-md-3 control-label" for="reason">Reason</label>
+                    <div class="col-md-9">
+                        <input id="reason" name="reason" type="text" placeholder="reason"
+                        class="form-control" />
+                    </div>
+                    
+                    <label class="col-md-3 control-label" for="amount">Amount</label>
+                    <div class="col-md-9">
+                        <input id="amount" name="amount" type="text" placeholder="amount"
+                        class="form-control" />
+                    </div>
+
+                    <label class="col-md-3 control-label" for="currency">Currency</label>
+                    <div class="col-md-9">
+                        <input id="currency" name="currency" type="text" placeholder="currency"
+                            class="form-control" />
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+       
+
     </div>
-
-
 </body>
 
 </html>
