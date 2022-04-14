@@ -21,12 +21,13 @@ create table BATCH1BTR_TRIPDETAILS(
     from_country varchar(255),
     to_city varchar(255),
     to_country varchar(255),
-    accomodation varchar(255),
+    accomodation varchar(3),
     reason varchar(255),
     date_of_journey varchar(255),
     amount number(5),
     currency varchar(255),
-    status varchar(255)
+    status varchar(255),
+    pending_with varchar(255) Default 'supervisor'
 );
 
 

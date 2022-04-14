@@ -1,1 +1,68 @@
-user dashboard
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  </head>
+  <body>
+    <a href="/create">Create New Request</a>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="well well-sm">
+            <fieldset>
+              <legend class="text-center">My Trips</legend>
+            </fieldset>
+<table>
+    <tr>
+        <th>
+            Journey
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Date of Journey
+        </th>
+    </tr>
+    <tr>
+
+    
+            <div class="d-flex justify-content-center m-4">
+              <% for(let trip of trips) {%>
+              <div class="card m-2 p-2" style="width: 18rem">
+                <div class="card-body">
+                    <td>
+                        <h5 class="card-title"><%= trip[2]%> to <%= trip[4]%></h5>
+                    </td>
+                  <td>
+                    <p class="card-text"><%= trip[11]%></p>
+                  </td>
+                  <td>
+                    <p class="card-text"><%= trip[8]%></p>
+                  </td>
+                  
+                </div>
+              </div>
+              </tr>
+              
+              <% } %>
+            </div>
+        </table>
+        <a href="/account/logout">LOGOUT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
