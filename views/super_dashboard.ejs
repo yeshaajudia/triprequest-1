@@ -1,86 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-</head>
-
-<body>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="well well-sm">
-          <fieldset>
-            <legend class="text-center">My Trips</legend>
-          </fieldset>
-          <table>
-            <tr>
-              <th>
-                Journey
-              </th>
-              <th>
-                Status
-              </th>
-              <th>
-                Date of Journey
-              </th>
-              <th>
-                Approve
-              </th>
-              <th>
-                Decline
-              </th>
-            </tr>
-            <tr>
-
-
-              <div class="d-flex justify-content-center m-4">
-                <% for(let trip of trips) {%>
-                  <div class="card m-2 p-2" style="width: 18rem">
-                    <div class="card-body">
-                      <td>
-                        <h5 class="card-title">
-                          <%= trip[2]%> to <%= trip[4]%>
-                        </h5>
-                      </td>
-                      <td>
-                        <p class="card-text">
-                          <%= trip[11]%>
-                        </p>
-                      </td>
-                      <td>
-                        <p class="card-text">
-                          <%= trip[8]%>
-                        </p>
-                      </td>
-                      <td>
-                        <a href="/approve/<%=trip[0]%>/<%=trip[11]%>">APPROVE</a>
-
-                      </td>
-                      <td>
-                        <a href="/decline/<%=trip[0]%>">DECLINE</a>
-                      </td>
-                    </div>
-                  </div>
-            </tr>
-
-
-            <% } %>
+  <body>
+    <div id="accordion">
+      <% for(let trip of trips) {%>
+      <div class="card">
+        <div class="card-header" id="heading<%=trip[0]%>">
+          <h5 class="mb-0">
+            <button
+              class="btn btn-link"
+              data-toggle="collapse"
+              data-target="#collapse<%=trip[0]%>"
+              aria-expanded="false"
+              aria-controls="collapse<%=trip[0]%>"
+            >
+              <%= trip[2]%> to <%= trip[4]%>
+            </button>
+          </h5>
         </div>
-        </table>
-        <a href="/account/logout">LOGOUT</a>
-      </div>
-    </div>
-  </div>
-  </div>
-</body>
 
+        <div
+          id="collapse<%=trip[0]%>"
+          class="collapse"
+          aria-labelledby="heading<%=trip[0]%>"
+          data-parent="#accordion"
+        >
+          <div class="card-body">Status: <%= trip[11]%></div>
+          <div>Pending with: <%= trip[12]%></div>
+          <div>Date of Journey: <%= trip[8]%></div>
+          <div>Accomodation: <%= trip[6]%></div>
+          <div>Reason: <%= trip[7]%></div>
+          <div>Amount: <%= trip[9]%></div>
+          <div>Currency: <%= trip[10]%></div>
+          <a href="/approve/<%=trip[0]%>/<%=trip[11]%>">APPROVE</a>
+          <a href="/decline/<%=trip[0]%>">DECLINE</a>
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <div>
+      <a href="/account/logout">LOGOUT</a>
+    </div>
+  </body>
 </html>
