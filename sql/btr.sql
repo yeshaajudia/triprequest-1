@@ -30,7 +30,7 @@ create table BATCH1BTR_TRIPDETAILS(
     pending_with varchar(255) Default 'supervisor'
 );
 
-
+select t.trip_id, t.from_city, t.to_city, t.from_country, t.to_country, t.accomodation, t.reason, t.date_of_journey, t.amount, t.currency, t.status, u.uname, u.date_of_joining, u.nationality, u.date_of_birth, u.passport_number from batch1btr_tripdetails t natural join batch1btr_user u where t.pending_with='supervisor'
 
 create table batch1btr_locations (
     city_id number(3) GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) primary key,
