@@ -52,13 +52,20 @@
           aria-labelledby="heading<%=trip[0]%>"
           data-parent="#accordion"
         >
-          <div class="card-body">Status: <%= trip[11]%></div>
-          <div>Pending with: <%= trip[12]%></div>
-          <div>Date of Journey: <%= trip[8]%></div>
-          <div>Accomodation: <%= trip[6]%></div>
-          <div>Reason: <%= trip[7]%></div>
-          <div>Amount: <%= trip[9]%></div>
-          <div>Currency: <%= trip[10]%></div>
+          <div class="card-body">
+            <div>Requestor: <%= trip[11]%></div>
+            <div>Date of Joining: <%= trip[12]%></div>
+            <div>Nationality: <%= trip[13]%></div>
+            <div>Date of Birth: <%= trip[14]%></div>
+            <div>Passport Number: <%= trip[15]%></div> 
+            
+            <div>From: <%= trip[1]%>, <%= trip[3]%></div>           
+            <div>To: <%= trip[2]%>, <%= trip[4]%></div>
+          <div>Date of Journey: <%= trip[7]%></div>
+          <div>Accomodation: <%= trip[5]%></div>
+          <div>Reason: <%= trip[6]%></div>
+          <div>Amount: <%= trip[8]%></div>
+          <div>Currency: <%= trip[9]%></div>
           <a href="/approve/<%=trip[0]%>/<%=trip[11]%>">APPROVE</a>
           <a href="/decline/<%=trip[0]%>">DECLINE</a>
         </div>

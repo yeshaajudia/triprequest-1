@@ -1,107 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
 
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-</head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  </head>
 
-<body>
-
+  <body>
     <!-- //city from/to , country from/to, DOJ, accomodation,reason,advance -> amount, currency, submit -->
-    <div>   
+    <div>
+      <form class="form-horizontal" action="/create" method="post">
+        <fieldset>
+          <legend class="text-center">Create new request</legend>
+          <div>
+            <label for="">Name: </label>
+            <p><%=user[0][3]%></p>
+            <label for="">Date of joining: </label>
+            <p><%=user[0][4]%></p>
+            <label for="">Nationality: </label>
+            <p><%=user[0][5]%></p>
+            <br />
+            <label for="">Date of Birth: </label>
+            <p><%=user[0][6]%></p>
+            <label for="">Passport number: </label>
+            <p><%=user[0][7]%></p>
+          </div>
+          <hr />
+          <div class="form-group" style="width: 60%">
+            <label class="col-md-3 control-label" for="from_country"
+              >From Country</label
+            >
+            <div class="col-md-9">
+              <select id="from_country" name="from_country"></select>
+            </div>
 
-        <form class="form-horizontal" action="/create" method="post" >
-            <fieldset>
-                <legend class="text-center">Create new request</legend>
-            <div>
-                    <label for="">Name: </label>
-                    <p> <%=user[0][3]%></p>
-                    <label for="">Date of joining: </label>
-                    <p><%=user[0][4]%></p>
-                    <label for="">Nationality: </label>
-                    <p><%=user[0][5]%></p>
-                    <br>
-                    <label for="">Date of Birth: </label>
-                    <p><%=user[0][6]%></p>
-                    <label for="">Passport number: </label>
-                    <p><%=user[0][7]%></p>
-                </div>
-                <hr>
-                <div class="form-group" style="width: 60%;">
-                    <label class="col-md-3 control-label" for="from_city">From City</label>
-                    <div class="col-md-9">
-                        <input id="from_city" name="from_city" type="text" placeholder="from_city"
-                            class="form-control" />
-                        </div>
+            <label class="col-md-3 control-label" for="from_city"
+              >From City</label
+            >
+            <div class="col-md-9">
+              <select id="from_city" name="from_city"></select>
+            </div>
 
-                        <label class="col-md-3 control-label" for="to_city">TO City</label>
-                    <div class="col-md-9">
-                        <input id="to_city" name="to_city" type="text" placeholder="to_city"
-                            class="form-control" />
-                    </div>
-                    
-                    <label class="col-md-3 control-label" for="from_country">From Country</label>
-                    <div class="col-md-9">
-                        <input id="from_country" name="from_country" type="text" placeholder="from_country"
-                            class="form-control" />
-                    </div>
-                    
-                    <label class="col-md-3 control-label" for="to_country">To Country</label>
-                    <div class="col-md-9">
-                        <input id="to_country" name="to_country" type="text" placeholder="to_country"
-                            class="form-control" />
-                    </div>
+            <label class="col-md-3 control-label" for="to_country"
+              >To Country</label
+            >
+            <div class="col-md-9">
+              <select id="to_country" name="to_country"></select>
+            </div>
 
-                    <label class="col-md-3 control-label" for="date_of_journey">Date of journey</label>
-                    <div class="col-md-9">
-                        <input id="date_of_journey" name="date_of_journey" type="date" placeholder="date_of_journey"
-                        class="form-control" />
-                    </div>
+            <label class="col-md-3 control-label" for="to_city">To City</label>
+            <div class="col-md-9">
+              <select id="to_city" name="to_city"></select>
+            </div>
 
-                    <label class="col-md-3 control-label" for="accomodation">Accomodation</label>
-                    <div class="col-md-9">
-                        <input id="accomodation" name="accomodation" type="text" placeholder="accomodation"
-                            class="form-control" />
-                    </div> 
+            <label class="col-md-3 control-label" for="date_of_journey"
+              >Date of journey</label
+            >
+            <div class="col-md-9">
+              <input
+                id="date_of_journey"
+                name="date_of_journey"
+                type="date"
+                placeholder="Enter the Date of Journey"
+                class="form-control"
+                min=""
+              />
+            </div>
 
-                    <label class="col-md-3 control-label" for="reason">Reason</label>
-                    <div class="col-md-9">
-                        <input id="reason" name="reason" type="text" placeholder="reason"
-                        class="form-control" />
-                    </div>
-                    
-                    <label class="col-md-3 control-label" for="amount">Amount</label>
-                    <div class="col-md-9">
-                        <input id="amount" name="amount" type="text" placeholder="amount"
-                        class="form-control" />
-                    </div>
+            <label class="col-md-3 control-label" for="accomodation"
+              >Accomodation</label
+            >
+            <div class="col-md-9">
+              <select
+                id="accomodation"
+                name="accomodation"
+                placeholder="Enter Accomodation"
+                class="form-control"
+              >
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
 
-                    <label class="col-md-3 control-label" for="currency">Currency</label>
-                    <div class="col-md-9">
-                        <input id="currency" name="currency" type="text" placeholder="currency"
-                            class="form-control" />
-                    </div>
-                    
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            Submit
-                        </button>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
-       
+            <label class="col-md-3 control-label" for="reason">Reason</label>
+            <div class="col-md-9">
+              <input
+                id="reason"
+                name="reason"
+                type="text"
+                placeholder="Enter Reason"
+                class="form-control"
+              />
+            </div>
 
+            <label class="col-md-3 control-label" for="amount">Amount</label>
+            <div class="col-md-9">
+              <input
+                id="amount"
+                name="amount"
+                type="text"
+                placeholder="Enter Amount"
+                class="form-control"
+              />
+            </div>
+
+            <label class="col-md-3 control-label" for="currency"
+              >Currency</label
+            >
+            <div class="col-md-9">
+              <select
+                id="currency"
+                name="currency"
+                placeholder="Enter Currency"
+                class="form-control"
+              >
+                <option value="inr">Rupee</option>
+                <option value="usd">USD</option>
+                <option value="dir">Dirham</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 text-center">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Submit
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
     </div>
-</body>
 
+    <script>
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+      var yyyy = today.getFullYear();
+      if (dd < 10) {
+        dd = "0" + dd;
+      }
+      if (mm < 10) {
+        mm = "0" + mm;
+      }
+
+      today = yyyy + "-" + mm + "-" + dd;
+      document.getElementById("date_of_journey").setAttribute("min", today);
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var country_arr = new Array(
+          "Select Country",
+          "AUSTRALIA",
+          "INDIA",
+          "NEW ZEALAND",
+          "USA",
+          "UAE",
+          "MAURITIUS"
+        );
+
+        $.each(country_arr, function (i, item) {
+          $("#from_country").append(
+            $(
+              "<option>",
+              {
+                value: i,
+                text: item,
+              },
+              "</option>"
+            )
+          );
+        });
+
+        $.each(country_arr, function (i, item) {
+          $("#to_country").append(
+            $(
+              "<option>",
+              {
+                value: i,
+                text: item,
+              },
+              "</option>"
+            )
+          );
+        });
+
+        var c_a = new Array();
+        c_a[0] = "Select CITY";
+        c_a[1] = "Select CITY|BRISBANE|MELBOURN";
+        c_a[2] =
+          "Select CITY|HYDERABAD|BANGLORE|CHENNAI|DELHI|PANJI|KOLKATA|AHMEDABAD|INDORE|PUNE|JAIPUR";
+        c_a[3] = "Select CITY|AUCKLAND";
+        c_a[4] = "Select CITY|EDISON|CHICAGO";
+        c_a[5] = "Select CITY|DUBAI";
+        c_a[6] = "Select CITY|MAURITIUS";
+
+        $("#from_country").change(function () {
+          var c = $(this).val();
+          var city_arr = c_a[c].split("|");
+          $("#from_city").empty();
+          if (c == 0) {
+            $("#from_city").append(
+              $(
+                "<option>",
+                {
+                  value: "0",
+                  text: "Select City",
+                },
+                "</option>"
+              )
+            );
+          } else {
+            $.each(city_arr, function (i, item_city) {
+              $("#from_city").append(
+                $(
+                  "<option>",
+                  {
+                    value: item_city,
+                    text: item_city,
+                  },
+                  "</option>"
+                )
+              );
+            });
+          }
+        });
+
+        $("#to_country").change(function () {
+          var c = $(this).val();
+          var city_arr = c_a[c].split("|");
+          $("#to_city").empty();
+          if (c == 0) {
+            $("#to_city").append(
+              $(
+                "<option>",
+                {
+                  value: "0",
+                  text: "Select City",
+                },
+                "</option>"
+              )
+            );
+          } else {
+            $.each(city_arr, function (i, item_city) {
+              $("#to_city").append(
+                $(
+                  "<option>",
+                  {
+                    value: item_city,
+                    text: item_city,
+                  },
+                  "</option>"
+                )
+              );
+            });
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
