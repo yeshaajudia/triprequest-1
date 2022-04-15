@@ -24,15 +24,13 @@ router.get("/", async (req, res) => {
       let query = `select t.trip_id, t.from_city, t.to_city, t.from_country, t.to_country, t.accomodation, t.reason, t.date_of_journey, t.amount, t.currency, t.status, u.uname, u.date_of_joining, u.nationality, u.date_of_birth, u.passport_number from batch1btr_tripdetails t natural join batch1btr_user u where t.pending_with='${uname}'`;
       let trips = await connection.execute(query);
       trips = trips.rows;
-      console.log(trips);
       res.render("super_dashboard", { trips });
     }
     else if(user_role == 'ADMIN'){
       let query = `select t.trip_id, t.from_city, t.to_city, t.from_country, t.to_country, t.accomodation, t.reason, t.date_of_journey, t.amount, t.currency, t.status, u.uname, u.date_of_joining, u.nationality, u.date_of_birth, u.passport_number from batch1btr_tripdetails t natural join batch1btr_user u`;
       let trips = await connection.execute(query);
       trips = trips.rows;
-      console.log(trips);
-      res.render("super_dashboard", { trips});
+      res.render("super_dashboard", {trips});
     }
   } else res.redirect("/account/login");
 });
