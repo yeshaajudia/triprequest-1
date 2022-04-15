@@ -1,6 +1,7 @@
 import express from "express"
 import sessions from "express-session"
 import cookieParser from "cookie-parser"
+import oracledb from "oracledb"
 
 const app = express()
 import router from "./routes/app-routes.js"
@@ -10,6 +11,17 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const oneDay = 1000 * 60 * 60 * 24;
+let connection;
+  try {
+    connection = await oracledb.getConnection( {
+      user          : "c##btr",
+      password      : "root",
+      connectString : "localhost:1521/xe"
+    });}
+    catch(e){
+        console.log(e)
+    }
+
 app.use(sessions({
     secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
     saveUninitialized:true,
@@ -30,3 +42,6 @@ app.use('/account', routerAcc)
 app.listen(1337, ()=>{
     console.log("listening at 1337")
 })
+
+
+export default connection
