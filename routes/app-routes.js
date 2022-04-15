@@ -17,7 +17,6 @@ router.get("/", async (req, res) => {
       let query = `select * from batch1btr_tripdetails where user_id=${user_id}`;
       let trips = await connection.execute(query);
       trips = trips.rows;
-      // console.log(trips);
       res.render("user_dashboard", { trips });
     }
     else if(user_role != 'ADMIN') {
