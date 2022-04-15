@@ -24,7 +24,7 @@
         box-sizing: border-box;
       }
       body {
-        background-color: #eae7dc;
+        background-color: #e3e2df;
       }
       .background {
         width: 430px;
@@ -40,7 +40,7 @@
         position: absolute;
         border-radius: 50%;
       }
-      .shape:first-child {
+      /* .shape:first-child {
         background: linear-gradient(#1845ad, #23a2f6);
         left: -80px;
         top: -80px;
@@ -49,13 +49,13 @@
         background: linear-gradient(to right, #ff512f, #f09819);
         right: -30px;
         bottom: -80px;
-      }
+      } */
       div {
         margin-top: 170px;
         margin-bottom: 1200px;
         height: 1000px;
         width: 600px;
-        background-color: #89898987;
+        background-color: #e3afbc;
         position: absolute;
         transform: translate(-50%, -50%);
         top: 50%;
@@ -95,7 +95,7 @@
         display: block;
         height: 50px;
         width: 100%;
-        background-color: #e8f0fe;
+        background-color: white; /*#e8f0fe;*/
         border-radius: 3px;
         padding: 0 10px;
         margin-top: 8px;
@@ -148,25 +148,42 @@
           name="username"
           id="username"
           placeholder="Email@email.com"
+          required
         />
 
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" />
+        <input type="password" name="password" id="password" required />
 
         <label for="uname">Name</label>
-        <input type="text" name="uname" id="uname" />
+        <input type="text" name="uname" id="uname" required />
 
         <label for="date_of_joining">Date of Joining</label>
-        <input type="date" name="date_of_joining" id="date_of_joining" />
+        <input
+          type="date"
+          name="date_of_joining"
+          id="date_of_joining"
+          required
+        />
 
         <label for="nationality">Nationality</label>
-        <input type="text" name="nationality" id="nationality" />
+        <input type="text" name="nationality" id="nationality" required />
 
         <label for="date_of_birth">Date of Birth</label>
-        <input type="date" name="date_of_birth" id="date_of_birth" max="" />
+        <input
+          type="date"
+          name="date_of_birth"
+          id="date_of_birth"
+          max=""
+          required
+        />
 
         <label for="passport_number">Passport number</label>
-        <input type="text" name="passport_number" id="passport_number" />
+        <input
+          type="text"
+          name="passport_number"
+          id="passport_number"
+          required
+        />
 
         <button type="submit">Register</button>
       </form>
