@@ -12,7 +12,7 @@ create table batch1btr_user (
 insert into batch1btr_user (username, userpassword,uname, user_role) values ('supervisor@mastek.com', 'root','supervisor','L1');
 insert into batch1btr_user (username, userpassword,uname, user_role) values ('depthead@mastek.com', 'root','depthead','L2');
 insert into batch1btr_user (username, userpassword,uname, user_role) values ('prochead@mastek.com', 'root','prochead','L3');
-
+insert into batch1btr_user (username, userpassword,uname, user_role) values ('admin@mastek.com', 'root','admin','ADMIN');
 
 create table BATCH1BTR_TRIPDETAILS(
     trip_id number(3) GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) primary key,

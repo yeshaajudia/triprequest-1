@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
       res.render("super_dashboard", { trips });
     }
     else if(user_role == 'ADMIN'){
-      let query = `select t.trip_id, t.from_city, t.to_city, t.from_country, t.to_country, t.accomodation, t.reason, t.date_of_journey, t.amount, t.currency, t.status, u.uname, u.date_of_joining, u.nationality, u.date_of_birth, u.passport_number from batch1btr_tripdetails t natural join batch1btr_user u`;
+      let query = `select t.trip_id, t.from_city, t.to_city, t.from_country, t.to_country, t.accomodation, t.reason, t.date_of_journey, t.amount, t.currency, t.status, u.uname, u.date_of_joining, u.nationality, u.date_of_birth, u.passport_number from batch1btr_tripdetails t natural join batch1btr_user u where status = 'In Process'`;
       let trips = await connection.execute(query);
       trips = trips.rows;
       res.render("super_dashboard", {trips});
