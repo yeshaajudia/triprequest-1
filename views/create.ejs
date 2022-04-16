@@ -1,75 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../static/css/create.css" />
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="../static/css/create.css" />
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        text-align: center;
-        /* background-color: #eae7dc; */
-        box-sizing: border-box;
-      }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-      .read {
-        display: inline-flex;
-      }
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      text-align: center;
+      /* background-color: #eae7dc; */
+      box-sizing: border-box;
+    }
 
-      p {
-        font-size: 20px;
-        margin: 23px;
-        padding: 3px;
-        /* text-decoration: underline; */
-        /* border: 2px solid black; */
-      }
+    .read {
+      display: inline-flex;
+    }
 
-      .parent {
-        display: inline-block;
-      }
+    p {
+      font-size: 20px;
+      margin: 23px;
+      padding: 3px;
+      /* text-decoration: underline; */
+      /* border: 2px solid black; */
+    }
 
-      body {
-        background-color: #e3e2df;
-        font-family: "Poppins", sans-serif;
-      }
-      * {
-        box-sizing: border-box;
-      }
+    .parent {
+      display: inline-block;
+    }
 
-      input[type="text"],
-      input[type="date"],
-      select,
-      textarea {
-        font-size: 20px;
-        width: 29%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-top: 6px;
-        margin-bottom: 16px;
-        resize: vertical;
-        font-family: "Poppins", sans-serif;
-      }
-      label {
-        font-size: 20px;
-      }
+    body {
+      background-color: #e3e2df;
+      font-family: "Poppins", sans-serif;
+    }
 
-      /* input[type="submit"] {
+    * {
+      box-sizing: border-box;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
+      font-size: 20px;
+      width: 29%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+      font-family: "Poppins", sans-serif;
+    }
+
+    label {
+      font-size: 20px;
+    }
+
+    /* input[type="submit"] {
         background-color: #04aa6d;
         color: white;
         padding: 12px 20px;
@@ -79,259 +76,233 @@
         font-size: 20px;
       } */
 
-      /* input[type="submit"]:hover {
+    /* input[type="submit"]:hover {
         background-color: #45a049;
       } */
 
-      button {
-        margin-top: 33px;
-        width: 10%;
-        background-color: #ffffff;
-        color: #080710;
-        padding: 15px 0;
-        font-size: 18px;
-        font-weight: 600;
-        border-radius: 5px;
-        cursor: pointer;
-        border-color: white;
-        font-family: "Poppins", sans-serif;
-      }
-      button:hover {
-        background-color: black;
-        color: white;
-      }
+    button {
+      margin-top: 33px;
+      width: 10%;
+      background-color: #ffffff;
+      color: #080710;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      border-color: white;
+      font-family: "Poppins", sans-serif;
+    }
 
-      .container {
-        border-radius: 5px;
-        background-color: #e3afbc;
-        padding: 20px;
-      }
-    </style>
-  </head>
+    button:hover {
+      background-color: black;
+      color: white;
+    }
 
-  <body>
-    <div class="parent">
-      <h1>Create New Request</h1>
-      <hr />
-      <div class="read">
-        <p>Name: <%=user[0][0]%></p>
-        <p>Date of joining: <%=user[0][1]%></p>
-        <p>Nationality: <%=user[0][2]%></p>
-        <p>Date of Birth: <%=user[0][3]%></p>
-        <p>Passport number: <%=user[0][4]%></p>
-      </div>
+    .container {
+      border-radius: 5px;
+      background-color: #e3afbc;
+      padding: 20px;
+    }
+  </style>
+</head>
 
-      <hr />
-      <div class="container">
-        <form action="/create" method="post">
-          <label class="" for="from_country" style="margin: 5px"
-            >From Country:</label
-          >
-          <select id="from_country" name="from_country"></select>
-          <label class="" for="from_city" style="margin: 5px; margin-left: 18px"
-            >From City:</label
-          >
-          <select id="from_city" name="from_city"></select>
-
-          <br />
-          <label class="" for="to_country" style="margin: 5px"
-            >To Country:</label
-          >
-          <select id="to_country" name="to_country"></select>
-          <label class="" for="to_city" style="margin: 5px; margin-left: 18px"
-            >To City:</label
-          >
-          <select id="to_city" name="to_city"></select>
-          <br />
-          <label class="" for="date_of_journey">Date of journey:</label>
-          <input
-            id="date_of_journey"
-            name="date_of_journey"
-            type="date"
-            style="margin-right: 53px"
-            placeholder="Enter the Date of Journey"
-            class=""
-            min=""
-            required
-          />
-          <br />
-          <label class="" for="accomodation">Accomodation:</label>
-          <select
-            id="accomodation"
-            name="accomodation"
-            placeholder="Enter Accomodation"
-            class="form-control"
-            style="margin-right: 49px"
-          >
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-          <br />
-          <label class="" for="reason">Reason:</label>
-          <textarea
-            name="reason"
-            id="reason"
-            cols="30"
-            rows="1"
-            style="margin-bottom: -5px"
-            placeholder="Enter Reason"
-          ></textarea>
-          <!-- <input id="reason" name="reason" type="text" placeholder="Enter Reason" class="form-control" /> -->
-          <br />
-          <label class="" for="amount">Amount:</label>
-          <input
-            id="amount"
-            name="amount"
-            style="margin-top: 19px"
-            type="text"
-            placeholder="Enter Amount"
-            class="form-control"
-            required
-          />
-          <br />
-          <label class="" for="currency">Currency:</label>
-          <select
-            id="currency"
-            name="currency"
-            style="margin-right: 10px"
-            placeholder="Enter Currency"
-            class="form-control"
-          >
-            <option value="inr">Rupee</option>
-            <option value="usd">USD</option>
-            <option value="dir">Dirham</option>
-          </select>
-          <br />
-          <button value="Submit">Submit</button>
-          <!-- <input type="submit" value="Submit" style="margin-right: -47px" /> -->
-        </form>
-      </div>
+<body>
+  <div class="parent">
+    <h1>Create New Request</h1>
+    <hr />
+    <div class="read">
+      <p>Name: <%=user[0][0]%>
+      </p>
+      <p>Date of joining: <%=user[0][1]%>
+      </p>
+      <p>Nationality: <%=user[0][2]%>
+      </p>
+      <p>Date of Birth: <%=user[0][3]%>
+      </p>
+      <p>Passport number: <%=user[0][4]%>
+      </p>
     </div>
 
-    <script>
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-      var yyyy = today.getFullYear();
-      if (dd < 10) {
-        dd = "0" + dd;
-      }
-      if (mm < 10) {
-        mm = "0" + mm;
-      }
+    <hr />
+    <div class="container">
+      <form action="/create" method="post">
+        <label class="" for="from_country" style="margin: 5px">From Country:</label>
+        <select id="from_country" name="from_country" required></select>
+        <label class="" for="from_city" style="margin: 5px; margin-left: 18px">From City:</label>
+        <select id="from_city" name="from_city" required></select>
 
-      today = yyyy + "-" + mm + "-" + dd;
-      document.getElementById("date_of_journey").setAttribute("min", today);
+        <br />
+        <label class="" for="to_country" style="margin: 5px">To Country:</label>
+        <select id="to_country" name="to_country" required></select>
+        <label class="" for="to_city" style="margin: 5px; margin-left: 18px">To City:</label>
+        <select id="to_city" name="to_city" required></select>
+        <br />
+        <label class="" for="date_of_journey">Date of journey:</label>
+        <input id="date_of_journey" name="date_of_journey" type="date" style="margin-right: 53px"
+          placeholder="Enter the Date of Journey" class="" min="" required />
+        <br />
+        <label class="" for="accomodation">Accomodation:</label>
+        <select id="accomodation" name="accomodation" placeholder="Enter Accomodation" class="form-control"
+          style="margin-right: 49px" required>
+          <option value="" selected disabled hidden>Choose here</option>
 
-      $(document).ready(function () {
-        var country_arr = new Array(
-          "Select Country",
-          "AUSTRALIA",
-          "INDIA",
-          "NEW ZEALAND",
-          "USA",
-          "UAE",
-          "MAURITIUS"
+
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        <br />
+        <label class="" for="reason">Reason:</label>
+        <textarea name="reason" id="reason" cols="30" rows="1" style="margin-bottom: -5px" placeholder="Enter Reason"
+          required></textarea>
+        <!-- <input id="reason" name="reason" type="text" placeholder="Enter Reason" class="form-control" /> -->
+        <br />
+        <label class="" for="amount">Amount:</label>
+        <input id="amount" name="amount" style="margin-top: 19px" type="text" placeholder="Enter Amount"
+          class="form-control" required />
+        <br />
+        <label class="" for="currency">Currency:</label>
+        <select id="currency" name="currency" style="margin-right: 10px" placeholder="Enter Currency"
+          class="form-control" required>
+          <option value="" selected disabled hidden>Choose here</option>
+
+
+          <option value="inr">Rupee</option>
+          <option value="usd">USD</option>
+          <option value="dir">Dirham</option>
+        </select>
+        <br />
+        <button value="Submit">Submit</button>
+        <!-- <input type="submit" value="Submit" style="margin-right: -47px" /> -->
+      </form>
+    </div>
+  </div>
+
+  <script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+
+    today = yyyy + "-" + mm + "-" + dd;
+    document.getElementById("date_of_journey").setAttribute("min", today);
+
+    $(document).ready(function () {
+      var country_arr = new Array(
+        "Select Country",
+        "AUSTRALIA",
+        "INDIA",
+        "NEW ZEALAND",
+        "USA",
+        "UAE",
+        "MAURITIUS"
+      );
+
+      $.each(country_arr, function (i, item) {
+        $("#from_country").append(
+          $(
+            "<option>",
+            {
+              value: item,
+              text: item,
+            },
+            "</option>"
+          )
         );
+      });
 
-        $.each(country_arr, function (i, item) {
-          $("#from_country").append(
+      $.each(country_arr, function (i, item) {
+        $("#to_country").append(
+          $(
+            "<option>",
+            {
+              value: item,
+              text: item,
+            },
+            "</option>"
+          )
+        );
+      });
+
+      var c_a = new Array();
+      c_a[0] = "Select CITY";
+      c_a[1] = "Select CITY|BRISBANE|MELBOURN";
+      c_a[2] =
+        "Select CITY|HYDERABAD|BANGLORE|CHENNAI|DELHI|PANJI|KOLKATA|AHMEDABAD|INDORE|PUNE|JAIPUR";
+      c_a[3] = "Select CITY|AUCKLAND";
+      c_a[4] = "Select CITY|EDISON|CHICAGO";
+      c_a[5] = "Select CITY|DUBAI";
+      c_a[6] = "Select CITY|MAURITIUS";
+
+      $("#from_country").change(function () {
+        var c = country_arr.indexOf($(this).val());
+        var city_arr = c_a[c].split("|");
+        $("#from_city").empty();
+        if (c == 0) {
+          $("#from_city").append(
             $(
               "<option>",
               {
-                value: item,
-                text: item,
+                value: "0",
+                text: "Select City",
               },
               "</option>"
             )
           );
-        });
-
-        $.each(country_arr, function (i, item) {
-          $("#to_country").append(
-            $(
-              "<option>",
-              {
-                value: item,
-                text: item,
-              },
-              "</option>"
-            )
-          );
-        });
-
-        var c_a = new Array();
-        c_a[0] = "Select CITY";
-        c_a[1] = "Select CITY|BRISBANE|MELBOURN";
-        c_a[2] =
-          "Select CITY|HYDERABAD|BANGLORE|CHENNAI|DELHI|PANJI|KOLKATA|AHMEDABAD|INDORE|PUNE|JAIPUR";
-        c_a[3] = "Select CITY|AUCKLAND";
-        c_a[4] = "Select CITY|EDISON|CHICAGO";
-        c_a[5] = "Select CITY|DUBAI";
-        c_a[6] = "Select CITY|MAURITIUS";
-
-        $("#from_country").change(function () {
-          var c = country_arr.indexOf($(this).val());
-          var city_arr = c_a[c].split("|");
-          $("#from_city").empty();
-          if (c == 0) {
+        } else {
+          $.each(city_arr, function (i, item_city) {
             $("#from_city").append(
               $(
                 "<option>",
                 {
-                  value: "0",
-                  text: "Select City",
+                  value: item_city,
+                  text: item_city,
                 },
                 "</option>"
               )
             );
-          } else {
-            $.each(city_arr, function (i, item_city) {
-              $("#from_city").append(
-                $(
-                  "<option>",
-                  {
-                    value: item_city,
-                    text: item_city,
-                  },
-                  "</option>"
-                )
-              );
-            });
-          }
-        });
+          });
+        }
+      });
 
-        $("#to_country").change(function () {
-          var c = country_arr.indexOf($(this).val());
-          var city_arr = c_a[c].split("|");
-          $("#to_city").empty();
-          if (c == 0) {
+      $("#to_country").change(function () {
+        var c = country_arr.indexOf($(this).val());
+        var city_arr = c_a[c].split("|");
+        $("#to_city").empty();
+        if (c == 0) {
+          $("#to_city").append(
+            $(
+              "<option>",
+              {
+                value: "0",
+                text: "Select City",
+              },
+              "</option>"
+            )
+          );
+        } else {
+          $.each(city_arr, function (i, item_city) {
             $("#to_city").append(
               $(
                 "<option>",
                 {
-                  value: "0",
-                  text: "Select City",
+                  value: item_city,
+                  text: item_city,
                 },
                 "</option>"
               )
             );
-          } else {
-            $.each(city_arr, function (i, item_city) {
-              $("#to_city").append(
-                $(
-                  "<option>",
-                  {
-                    value: item_city,
-                    text: item_city,
-                  },
-                  "</option>"
-                )
-              );
-            });
-          }
-        });
+          });
+        }
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>

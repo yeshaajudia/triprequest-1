@@ -2,8 +2,6 @@ import express from "express";
 const router = express.Router();
 import connection from "../server.js";
 
-// import sessions from "express-session";
-// import cookieParser from "cookie-parser";
 let session;
 router.get("/", async (req, res) => {
   session = req.session;
@@ -39,7 +37,6 @@ router.get("/create", async (req, res) => {
     const query = `select uname, date_of_joining, nationality, date_of_birth, passport_number from batch1btr_user where username = '${req.session.userid}'`;
     const result = await connection.execute(query);
     const user = result.rows;
-    // console.log(user)
     res.render("create.ejs", { user });
   } else {
     res.redirect("/account/login");
@@ -103,9 +100,7 @@ router.get("/decline/:trip_id", async (req, res) => {
   else {
     let query = `Select user_role from batch1btr_user where username ='${session.userid}'`;
     const sol = await connection.execute(query);
-    // console.log(sol["rows"])
     const user_role = sol["rows"][0][0];
-    // let status = req.body.status;
     if (user_role != "USER") {
       const pending_with = "none";
       const status = "Rejected";

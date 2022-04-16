@@ -2,10 +2,6 @@ import express from "express"
 import connection from "../server.js"
 const routerAcc = express.Router()
 import bcrypt from 'bcrypt'
-// import sessions from    "express-session"
-// import cookieParser from "cookie-parser"
-// const cookieParser = require("cookie-parser");
-// const sessions = require('express-session');
 
 let session
 
@@ -32,10 +28,7 @@ routerAcc.post('/login', async (req,res)=>{
 )
 
 routerAcc.get('/logout',(req,res) => {
-    // console.log(req.isAuthenticated());
-    // req._destroy()
     req.session.destroy()
-    req.session = null
     res.redirect('/');
 });
 
@@ -53,7 +46,6 @@ routerAcc.post('/register',async (req,res)=>{
     const date_of_birth = req.body.date_of_birth
     const passport_number = req.body.passport_number
     const hashedPassword = bcrypt.hashSync(password,10)
-    // const user_role = 'USER'
     const query = `INSERT INTO BATCH1BTR_USER (USERNAME, USERPASSWORD, UNAME,DATE_OF_JOINING, NATIONALITY, DATE_OF_BIRTH, PASSPORT_NUMBER, USER_ROLE) VALUES ('${username}','${hashedPassword}','${uname}', to_char(to_date('${date_of_joining}','yyyy-mm-dd'),'yyyy-mm-dd'), '${nationality}', to_char(to_date('${date_of_birth}','yyyy-mm-dd'),'yyyy-mm-dd'),'${passport_number}', 'USER')`
     const sol = await connection.execute(query)
     connection.commit()
