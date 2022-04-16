@@ -32,7 +32,10 @@ routerAcc.post('/login', async (req,res)=>{
 )
 
 routerAcc.get('/logout',(req,res) => {
-    req.session.destroy();
+    // console.log(req.isAuthenticated());
+    // req._destroy()
+    req.session.destroy()
+    req.session = null
     res.redirect('/');
 });
 

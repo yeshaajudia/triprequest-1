@@ -31,6 +31,16 @@ app.use(sessions({
 app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true }));
+app.use(function(req, res, next) {
+  if (!req.user) {
+      res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+      res.header('Expires', '-1');
+      res.header('Pragma', 'no-cache');
+  }
+  next();
+});
+
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
