@@ -41,7 +41,8 @@ routerAcc.post('/register',async (req,res)=>{
     const username = req.body.username
     let query = `select username from batch1btr_user where username = '${username}'`
     let sol = await connection.execute(query)
-    if (sol['rows'] != null) return res.render('register', {"message": "username already exists"})
+    console.log(sol['rows'])
+    if (!sol['rows']) return res.render('register', {"message": "username already exists"})
     const password = req.body.password
     const uname  = req.body.uname
     const date_of_joining = req.body.date_of_joining
@@ -52,7 +53,7 @@ routerAcc.post('/register',async (req,res)=>{
     query = `INSERT INTO BATCH1BTR_USER (USERNAME, USERPASSWORD, UNAME,DATE_OF_JOINING, NATIONALITY, DATE_OF_BIRTH, PASSPORT_NUMBER, USER_ROLE) VALUES ('${username}','${hashedPassword}','${uname}', to_char(to_date('${date_of_joining}','yyyy-mm-dd'),'yyyy-mm-dd'), '${nationality}', to_char(to_date('${date_of_birth}','yyyy-mm-dd'),'yyyy-mm-dd'),'${passport_number}', 'USER')`
     sol = await connection.execute(query)
     connection.commit()
-    res.redirect('login', {"message":"Account create successfully"})
+    res.render('login', {"message":""})
 })
 
 export default routerAcc
