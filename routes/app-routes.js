@@ -46,22 +46,23 @@ router.get("/create", async (req, res) => {
 router.post("/create", async (req, res) => {
   if (!req.session.userid) res.redirect("/account/login");
   else {
-    const from_city = req.body.from_city;
-    const to_city = req.body.to_city;
-    const from_country = req.body.from_country;
-    const to_country = req.body.to_country;
-    const date_of_journey = req.body.date_of_journey;
-    const accomodation = req.body.accomodation;
-    const reason = req.body.reason;
-    const amount = req.body.amount;
-    const currency = req.body.currency;
+    const {from_city, to_city, from_country, to_country, date_of_journey, accomodation, reason,amount,currency} = req.body;
+    // const from_city = req.body.from_city;
+    // const to_city = req.body.to_city;
+    // const from_country = req.body.from_country;
+    // const to_country = req.body.to_country;
+    // const date_of_journey = req.body.date_of_journey;
+    // const accomodation = req.body.accomodation;
+    // const reason = req.body.reason;
+    // const amount = req.body.amount;
+    // const currency = req.body.currency;
     let query = `select user_id from batch1btr_user where username='${session.userid}'`;
     const sol = await connection.execute(query);
     const user_id = sol["rows"][0][0];
     let insert_query = `INSERT INTO BATCH1BTR_TRIPDETAILS (user_id, from_city, to_city, from_country, to_country, date_of_journey, accomodation, reason, amount,currency, status) VALUES('${user_id}','${from_city}', '${to_city}', '${from_country}', '${to_country}', to_char(to_date('${date_of_journey}','yyyy-mm-dd'),'yyyy-mm-dd'), '${accomodation}', '${reason}', '${amount}', '${currency}', 'In Process') `;
     const solution = await connection.execute(insert_query);
     connection.commit();
-    res.redirect("/", {"message":""});
+    res.redirect("/");
   }
 });
 
