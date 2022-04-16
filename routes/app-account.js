@@ -43,7 +43,7 @@ routerAcc.post('/register',async (req,res)=>{
     const username = req.body.username
     let query = `select username from batch1btr_user where username = '${username}'`
     let sol = await connection.execute(query)
-    console.log(sol['rows'])
+    // console.log(sol['rows'])
     if (!sol['rows']) return res.render('register', {"message": "username already exists"})
     const password = req.body.password
     const uname  = req.body.uname
