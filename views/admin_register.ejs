@@ -1,5 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register User</title>
+
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       rel="stylesheet"
@@ -9,7 +15,6 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
       rel="stylesheet"
     />
-
     <style>
       *,
       *:before,
@@ -37,8 +42,10 @@
       }
 
       div {
-        height: 520px;
-        width: 400px;
+        margin-top: 170px;
+        margin-bottom: 1200px;
+        height: 1100px;
+        width: 600px;
         background-color: #e3afbc;
         position: absolute;
         transform: translate(-50%, -50%);
@@ -75,7 +82,8 @@
         background-color: black;
         color: white;
       }
-      input {
+      input,
+      select {
         display: block;
         height: 50px;
         width: 100%;
@@ -120,6 +128,7 @@
       }
     </style>
   </head>
+
   <body>
     <% if (message) { %>
     <script type="text/javascript">
@@ -127,28 +136,63 @@
     </script>
     <% } %>
     <div class="main">
-      <form action="/account/login" method="post">
-        <h3>LOGIN</h3>
+      <form action="/account/admin" method="post">
+        <h3>REGISTER</h3>
+
         <label for="username">Username</label>
         <input
-          type="text"
+          type="email"
           name="username"
           id="username"
-          placeholder="Email"
+          placeholder="Email@email.com"
           required
         />
 
         <label for="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Enter Password"
-          required
-        />
-        <button value="submit">Log In</button>
-        <a class="rbtn" href="/account/register"> Register Here</a>
+        <input type="password" name="password" id="password" required />
+
+        <label for="uname">Name</label>
+        <input type="text" name="uname" id="uname" required />
+
+        <label for="date_of_joining">Date of Joining</label>
+        <input type="date" name="date_of_joining" id="date_of_joining" />
+
+        <label for="nationality">Nationality</label>
+        <input type="text" name="nationality" id="nationality" />
+
+        <label for="date_of_birth">Date of Birth</label>
+        <input type="date" name="date_of_birth" id="date_of_birth" max="" />
+
+        <label for="passport_number">Passport number</label>
+        <input type="text" name="passport_number" id="passport_number" />
+
+        <label for="user_role">User Type</label>
+        <select id="user_role" name="user_role" required>
+          <option value="" selected disabled hidden>Choose here</option>
+          <option value="L1">SUPERVISOR</option>
+          <option value="L2">DEPARTMENT HEAD</option>
+          <option value="L3">PROCUREMENT HEAD</option>
+          <option value="USER">NORMAL USER</option>
+        </select>
+
+        <button type="submit">Create</button>
       </form>
     </div>
+
+    <script>
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear() - 18;
+      if (dd < 10) {
+        dd = "0" + dd;
+      }
+      if (mm < 10) {
+        mm = "0" + mm;
+      }
+
+      today = yyyy + "-" + mm + "-" + dd;
+      document.getElementById("date_of_birth").setAttribute("max", today);
+    </script>
   </body>
 </html>

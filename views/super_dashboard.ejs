@@ -21,12 +21,12 @@
     ></script>
     <style>
       body {
-        background-color: #e3e2df; /*eae7dc;*/
+        background-color: #e3e2df;
         font-family: "Poppins", sans-serif;
       }
 
       .collapsible {
-        background-color: #ee4c7c; /*e98074;*/
+        background-color: #ee4c7c;
         color: white;
         cursor: pointer;
         margin: auto;
@@ -37,14 +37,13 @@
         width: 70%;
         border: 2px solid #5d001e;
         text-align: left;
-        /* outline: none; */
         font-size: 25px;
         border-radius: 10px;
       }
 
       .active,
       .collapsible:hover {
-        background-color: #9a1750; /*e85a4f;*/
+        background-color: #9a1750;
       }
 
       .content {
@@ -61,14 +60,12 @@
       }
 
       h1 {
-        /* margin-left: 250px; */
         font-weight: 500;
         line-height: 42px;
         text-align: center;
         font-family: "Poppins", sans-serif;
       }
       button {
-        /* margin-top: 33px; */
         width: 15%;
         background-color: #ffffff;
         color: #080710;
@@ -90,33 +87,6 @@
         font-size: 20px;
         text-align: center;
       }
-      /* a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-      } */
-
-      /* .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 250px;
-        background-color: #f1f1f1;
-        position: fixed;
-        height: 100%;
-        overflow: auto;
-        font-size: 20px;
-      }
-
-      .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-      }
-
-      .sidebar a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-      } */
     </style>
   </head>
 
@@ -125,10 +95,10 @@
 
     <% for(let trip of trips) {%>
 
-    <button class="collapsible" type="button" style="margin-top: 5px;">
+    <button class="collapsible" type="button" style="margin-top: 5px">
       <%= trip[1]%> to <%= trip[2]%>
     </button>
-    <div class="content" style="margin-bottom: px;">
+    <div class="content" style="margin-bottom: px">
       <div>Requester: <%= trip[11]%></div>
       <div>Date of Joining: <%= trip[12]%></div>
       <div>Nationality: <%= trip[13]%></div>

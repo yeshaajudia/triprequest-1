@@ -40,16 +40,7 @@
         position: absolute;
         border-radius: 50%;
       }
-      /* .shape:first-child {
-        background: linear-gradient(#1845ad, #23a2f6);
-        left: -80px;
-        top: -80px;
-      }
-      .shape:last-child {
-        background: linear-gradient(to right, #ff512f, #f09819);
-        right: -30px;
-        bottom: -80px;
-      } */
+
       div {
         margin-top: 170px;
         margin-bottom: 1200px;
@@ -95,7 +86,7 @@
         display: block;
         height: 50px;
         width: 100%;
-        background-color: white; /*#e8f0fe;*/
+        background-color: white;
         border-radius: 3px;
         padding: 0 10px;
         margin-top: 8px;
@@ -139,8 +130,10 @@
 
   <body>
     <% if (message) { %>
-      <script type="text/javascript">alert('<%=message%>')</script>
-      <% } %>
+    <script type="text/javascript">
+      alert("<%=message%>");
+    </script>
+    <% } %>
     <div class="main">
       <form action="/account/register" method="post">
         <h3>REGISTER</h3>
@@ -195,7 +188,7 @@
     <script>
       var today = new Date();
       var dd = today.getDate();
-      var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+      var mm = today.getMonth() + 1;
       var yyyy = today.getFullYear() - 18;
       if (dd < 10) {
         dd = "0" + dd;
