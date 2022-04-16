@@ -130,6 +130,10 @@
     </style>
   </head>
   <body>
+    
+    <% if (message) { %>
+      <script type="text/javascript">alert('<%=message%>')</script>
+      <% } %>
     <div class="main">
       <form action="/account/login" method="post">
         <h3>LOGIN</h3>

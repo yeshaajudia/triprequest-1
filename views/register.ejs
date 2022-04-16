@@ -138,6 +138,9 @@
   </head>
 
   <body>
+    <% if (message) { %>
+      <script type="text/javascript">alert('<%=message%>')</script>
+      <% } %>
     <div class="main">
       <form action="/account/register" method="post">
         <h3>REGISTER</h3>

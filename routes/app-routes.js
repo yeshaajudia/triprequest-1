@@ -15,19 +15,19 @@ router.get("/", async (req, res) => {
       let query = `select  from_city,to_city,status, date_of_journey, reason from batch1btr_tripdetails where user_id=${user_id}`;
       let trips = await connection.execute(query);
       trips = trips.rows;
-      res.render("user_dashboard", { trips });
+      res.render("user_dashboard", { trips , "message":""});
     }
     else if(user_role != 'ADMIN') {
       let query = `select t.trip_id, t.from_city, t.to_city, t.from_country, t.to_country, t.accomodation, t.reason, t.date_of_journey, t.amount, t.currency, t.status, u.uname, u.date_of_joining, u.nationality, u.date_of_birth, u.passport_number from batch1btr_tripdetails t natural join batch1btr_user u where t.pending_with='${uname}'`;
       let trips = await connection.execute(query);
       trips = trips.rows;
-      res.render("super_dashboard", { trips });
+      res.render("super_dashboard", { trips , "message":"" });
     }
     else if(user_role == 'ADMIN'){
       let query = `select t.trip_id, t.from_city, t.to_city, t.from_country, t.to_country, t.accomodation, t.reason, t.date_of_journey, t.amount, t.currency, t.status, u.uname, u.date_of_joining, u.nationality, u.date_of_birth, u.passport_number from batch1btr_tripdetails t natural join batch1btr_user u where status = 'In Process'`;
       let trips = await connection.execute(query);
       trips = trips.rows;
-      res.render("super_dashboard", {trips});
+      res.render("super_dashboard", {trips , "message":""});
     }
   } else res.redirect("/account/login");
 });
@@ -61,7 +61,7 @@ router.post("/create", async (req, res) => {
     let insert_query = `INSERT INTO BATCH1BTR_TRIPDETAILS (user_id, from_city, to_city, from_country, to_country, date_of_journey, accomodation, reason, amount,currency, status) VALUES('${user_id}','${from_city}', '${to_city}', '${from_country}', '${to_country}', to_char(to_date('${date_of_journey}','yyyy-mm-dd'),'yyyy-mm-dd'), '${accomodation}', '${reason}', '${amount}', '${currency}', 'In Process') `;
     const solution = await connection.execute(insert_query);
     connection.commit();
-    res.redirect("/");
+    res.redirect("/", {"message":""});
   }
 });
 
@@ -90,7 +90,7 @@ router.get("/approve/:trip_id/:status", async (req, res) => {
 
       res.redirect("/");
     } else {
-      res.send("You're not allowed to do this action");
+      res.redirect("/", {"message":"You're not allowed to do this action"})
     }
   }
 });
@@ -110,8 +110,7 @@ router.get("/decline/:trip_id", async (req, res) => {
       connection.commit()
       res.redirect("/");
     } else {
-      res.send("You're not allowed to do this action");
-    }
+      res.redirect("/", {"message":"You're not allowed to do this action"})    }
   }
 });
 
