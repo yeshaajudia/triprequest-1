@@ -15,19 +15,18 @@ router.get("/", async (req, res) => {
       let query = `select  from_city,to_city,status, date_of_journey, reason from batch1btr_tripdetails where user_id=${user_id}`;
       let trips = await connection.execute(query);
       trips = trips.rows;
-      res.render("user_dashboard", { trips , "message":""});
-    }
-    else if(user_role != 'ADMIN') {
+      res.render("user_dashboard", { trips, message: "" });
+    } else if (user_role != "ADMIN") {
       let query = `select t.trip_id, t.from_city, t.to_city, t.from_country, t.to_country, t.accomodation, t.reason, t.date_of_journey, t.amount, t.currency, t.status, u.uname, u.date_of_joining, u.nationality, u.date_of_birth, u.passport_number from batch1btr_tripdetails t natural join batch1btr_user u where t.pending_with='${uname}'`;
       let trips = await connection.execute(query);
       trips = trips.rows;
-      res.render("super_dashboard", { trips , "message":"" });
-    }
-    else if(user_role == 'ADMIN'){
+      console.log(trips);
+      res.render("super_dashboard", { trips, message: "" });
+    } else if (user_role == "ADMIN") {
       let query = `select t.trip_id, t.from_city, t.to_city, t.from_country, t.to_country, t.accomodation, t.reason, t.date_of_journey, t.amount, t.currency, t.status, u.uname, u.date_of_joining, u.nationality, u.date_of_birth, u.passport_number from batch1btr_tripdetails t natural join batch1btr_user u where status = 'In Process'`;
       let trips = await connection.execute(query);
       trips = trips.rows;
-      res.render("super_dashboard", {trips , "message":""});
+      res.render("admin_dashboard", { trips, message: "" });
     }
   } else res.redirect("/account/login");
 });
@@ -54,7 +53,7 @@ router.post("/create", async (req, res) => {
     const solution = await connection.execute(insert_query);
     connection.commit();
     res.redirect("/");
-  }
+    }
 });
 
 router.get("/approve/:trip_id/:status", async (req, res) => {
@@ -78,11 +77,11 @@ router.get("/approve/:trip_id/:status", async (req, res) => {
       const trip_id = req.params.trip_id;
       query = `update batch1btr_tripdetails set status = '${status}', pending_with = '${pending_with}' where trip_id = '${trip_id}'`;
       await connection.execute(query);
-      connection.commit()
+      connection.commit();
 
       res.redirect("/");
     } else {
-      res.redirect("/", {"message":"You're not allowed to do this action"})
+      res.redirect("/", { message: "You're not allowed to do this action" });
     }
   }
 });
@@ -99,10 +98,11 @@ router.get("/decline/:trip_id", async (req, res) => {
       const trip_id = req.params.trip_id;
       query = `update batch1btr_tripdetails set status = '${status}', pending_with = '${pending_with}' where trip_id = '${trip_id}'`;
       const sol = await connection.execute(query);
-      connection.commit()
+      connection.commit();
       res.redirect("/");
     } else {
-      res.redirect("/", {"message":"You're not allowed to do this action"})    }
+      res.redirect("/", { message: "You're not allowed to do this action" });
+    }
   }
 });
 
