@@ -14,8 +14,10 @@ routerAcc.post('/login', async (req,res)=>{
     const password = String(req.body.password)
     const query = `select userpassword from batch1btr_user where username='${username}'`
     const sol = await connection.execute(query)
+    // console.log(sol['rows'])
     const passwordHash = String(sol['rows'][0])
     const match = await bcrypt.compare(password, passwordHash);
+    // console.log(match)
     if (match){
         session=req.session;
         session.userid=req.body.username;
