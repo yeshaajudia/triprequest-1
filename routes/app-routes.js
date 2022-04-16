@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
     const user_id = sol["rows"][0][1];
     const uname = sol["rows"][0][2];
     if (user_role == "USER") {
-      let query = `select * from batch1btr_tripdetails where user_id=${user_id}`;
+      let query = `select  from_city,to_city,status, date_of_journey, reason from batch1btr_tripdetails where user_id=${user_id}`;
       let trips = await connection.execute(query);
       trips = trips.rows;
       res.render("user_dashboard", { trips });
@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
 
 router.get("/create", async (req, res) => {
   if (req.session.userid) {
-    const query = `select * from batch1btr_user where username = '${req.session.userid}'`;
+    const query = `select uname, date_of_joining, nationality, date_of_birth, passport_number from batch1btr_user where username = '${req.session.userid}'`;
     const result = await connection.execute(query);
     const user = result.rows;
     // console.log(user)

@@ -1,6 +1,7 @@
 import express from "express"
 import connection from "../server.js"
 const routerAcc = express.Router()
+import bcrypt from 'bcrypt'
 // import sessions from    "express-session"
 // import cookieParser from "cookie-parser"
 // const cookieParser = require("cookie-parser");
@@ -14,10 +15,12 @@ routerAcc.get('/login', (req,res)=>{
 
 routerAcc.post('/login', async (req,res)=>{
     const username= String(req.body.username)
-    const password = req.body.password
+    const password = String(req.body.password)
     const query = `select userpassword from batch1btr_user where username='${username}'`
     const sol = await connection.execute(query)
-    if (sol['rows'][0][0]==password){
+    const passwordHash = String(sol['rows'][0])
+    const match = await bcrypt.compare(password, passwordHash);
+    if (match){
         session=req.session;
         session.userid=req.body.username;
         res.redirect('/');
@@ -46,8 +49,9 @@ routerAcc.post('/register',async (req,res)=>{
     const nationality = req.body.nationality
     const date_of_birth = req.body.date_of_birth
     const passport_number = req.body.passport_number
+    const hashedPassword = bcrypt.hashSync(password,10)
     // const user_role = 'USER'
-    const query = `INSERT INTO BATCH1BTR_USER (USERNAME, USERPASSWORD, UNAME,DATE_OF_JOINING, NATIONALITY, DATE_OF_BIRTH, PASSPORT_NUMBER, USER_ROLE) VALUES ('${username}','${password}','${uname}', to_char(to_date('${date_of_joining}','yyyy-mm-dd'),'yyyy-mm-dd'), '${nationality}', to_char(to_date('${date_of_birth}','yyyy-mm-dd'),'yyyy-mm-dd'),'${passport_number}', 'USER')`
+    const query = `INSERT INTO BATCH1BTR_USER (USERNAME, USERPASSWORD, UNAME,DATE_OF_JOINING, NATIONALITY, DATE_OF_BIRTH, PASSPORT_NUMBER, USER_ROLE) VALUES ('${username}','${hashedPassword}','${uname}', to_char(to_date('${date_of_joining}','yyyy-mm-dd'),'yyyy-mm-dd'), '${nationality}', to_char(to_date('${date_of_birth}','yyyy-mm-dd'),'yyyy-mm-dd'),'${passport_number}', 'USER')`
     const sol = await connection.execute(query)
     connection.commit()
     res.redirect('login')

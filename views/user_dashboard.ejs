@@ -110,13 +110,13 @@
     </div>
 
     <% for(let trip of trips) {%>
-    <button class="collapsible" type="button">
-      <%= trip[2]%> to <%= trip[4]%>
+    <button class="collapsible" type="button" style="margin-top: 5px;">
+      <%= trip[0]%> to <%= trip[1]%>
     </button>
-    <div class="content">
-      <div>Status: <%= trip[11]%></div>
-      <div>Date of Journey: <%= trip[8]%></div>
-      <div>Reason: <%= trip[7]%></div>
+    <div class="content" style="margin-bottom: 8px;">
+      <div>Status: <%= trip[2]%></div>
+      <div>Date of Journey: <%= trip[3]%></div>
+      <div>Reason: <%= trip[4]%></div>
     </div>
     <% } %>
     <script>
