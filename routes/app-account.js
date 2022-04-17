@@ -12,7 +12,7 @@ routerAcc.get("/login", (req, res) => {
 routerAcc.post("/login", async (req, res) => {
   const username = String(req.body.username);
   const password = String(req.body.password);
-  const query = `select userpassword from batch1btr_user where username='${username}'`;
+  const query = `select userpassword from adbatch1btr_user where username='${username}'`;
   const sol = await connection.execute(query);
   const passwordHash = String(sol["rows"][0]);
   const match = await bcrypt.compare(password, passwordHash);
@@ -36,7 +36,7 @@ routerAcc.get("/register", (req, res) => {
 
 routerAcc.post("/register", async (req, res) => {
   const username = req.body.username;
-  let query = `select username from batch1btr_user where username = '${username}'`;
+  let query = `select username from adbatch1btr_user where username = '${username}'`;
   let sol = await connection.execute(query);
   if (sol["rows"][0])
     return res.render("register", { message: "username already exists" });
@@ -49,7 +49,7 @@ routerAcc.post("/register", async (req, res) => {
     passport_number,
   } = req.body;
   const hashedPassword = bcrypt.hashSync(password, 10);
-  query = `INSERT INTO BATCH1BTR_USER (USERNAME, USERPASSWORD, UNAME,DATE_OF_JOINING, NATIONALITY, DATE_OF_BIRTH, PASSPORT_NUMBER, USER_ROLE) VALUES ('${username}','${hashedPassword}','${uname}', to_char(to_date('${date_of_joining}','yyyy-mm-dd'),'yyyy-mm-dd'), '${nationality}', to_char(to_date('${date_of_birth}','yyyy-mm-dd'),'yyyy-mm-dd'),'${passport_number}', 'USER')`;
+  query = `INSERT INTO ADBATCH1BTR_USER (USERNAME, USERPASSWORD, UNAME,DATE_OF_JOINING, NATIONALITY, DATE_OF_BIRTH, PASSPORT_NUMBER, USER_ROLE) VALUES ('${username}','${hashedPassword}','${uname}', to_char(to_date('${date_of_joining}','yyyy-mm-dd'),'yyyy-mm-dd'), '${nationality}', to_char(to_date('${date_of_birth}','yyyy-mm-dd'),'yyyy-mm-dd'),'${passport_number}', 'USER')`;
   sol = await connection.execute(query);
   connection.commit();
   res.render("login", { message: "" });
@@ -58,7 +58,7 @@ routerAcc.post("/register", async (req, res) => {
 routerAcc.get("/admin", async (req, res) => {
   if (req.session.userid) {
     const user_id = session.userid;
-    let query = `select user_role from batch1btr_user where username='${user_id}'`;
+    let query = `select user_role from adbatch1btr_user where username='${user_id}'`;
     let sol = await connection.execute(query);
     const user_role = sol["rows"][0][0];
     if (user_role == "ADMIN") {
@@ -73,7 +73,7 @@ routerAcc.get("/admin", async (req, res) => {
 
 routerAcc.post("/admin", async (req, res) => {
   const username = req.body.username;
-  let query = `select username from batch1btr_user where username='${username}'`;
+  let query = `select username from adbatch1btr_user where username='${username}'`;
   let sol = await connection.execute(query);
   if (sol["rows"][0])
     return res.render("admin_register", { message: "user already exists" });
@@ -87,7 +87,7 @@ routerAcc.post("/admin", async (req, res) => {
     user_role,
   } = req.body;
   const hashedPassword = bcrypt.hashSync(password, 10);
-  query = `insert into batch1btr_user(USERNAME, USERPASSWORD, UNAME,DATE_OF_JOINING, NATIONALITY, DATE_OF_BIRTH, PASSPORT_NUMBER, USER_ROLE) values ('${username}','${hashedPassword}','${uname}', to_char(to_date('${date_of_joining}','yyyy-mm-dd'),'yyyy-mm-dd'), '${nationality}', to_char(to_date('${date_of_birth}','yyyy-mm-dd'),'yyyy-mm-dd'),'${passport_number}', '${user_role}')`;
+  query = `insert into adbatch1btr_user(USERNAME, USERPASSWORD, UNAME,DATE_OF_JOINING, NATIONALITY, DATE_OF_BIRTH, PASSPORT_NUMBER, USER_ROLE) values ('${username}','${hashedPassword}','${uname}', to_char(to_date('${date_of_joining}','yyyy-mm-dd'),'yyyy-mm-dd'), '${nationality}', to_char(to_date('${date_of_birth}','yyyy-mm-dd'),'yyyy-mm-dd'),'${passport_number}', '${user_role}')`;
   sol = await connection.execute(query);
   connection.commit();
   res.redirect("/");

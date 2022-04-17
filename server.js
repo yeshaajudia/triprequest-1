@@ -14,9 +14,10 @@ const oneDay = 1000 * 60 * 60 * 24;
 let connection;
 try {
   connection = await oracledb.getConnection({
-    user: "c##btr",
-    password: "root",
-    connectString: "localhost:1521/xe",
+    user: "trainee_schema",
+    password: "Trn__Schema_21",
+    connectString:
+      "132.145.42.131:1521/Testdb_pdb1.evopaassub1.evopaasvcn.oraclevcn.com",
   });
 } catch (e) {
   console.log(e);
